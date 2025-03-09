@@ -1,10 +1,21 @@
 # stats220
-This is my repo for STATS 220. 
 
-A little about me:
+This is my repo where I explore data analysis techniques and R programming. For more details about my projects, visit my [GitHub profile](https://github.com/annafergusson/stats220).
 
-- I am undertaking a degree in bachlor of communication.
-- I am taking STATS 220 because it was one of my pathway compulsory course.
-- I am interested in learning about r programing usage.
+## A little about me:
 
-A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
+I'm pursuing a Bachelor of Communication and I'm excited about the opportunities this course offers. Here’s why I’m taking STATS 220:
+
+- I have a passion for data visualization.
+- I enjoy solving problems using R programming.
+- I am eager to learn new analytical techniques.
+
+### Why I Chose STATS 220
+
+1. It is a compulsory pathway course.
+2. It provides a strong foundation for advanced studies.
+3. It offers practical insights through hands-on projects.
+
+ Current Mood
+
+A meme that captures how I currently feel about my university studies is ![](https://media.giphy.com/media/26AHqZycSplGWWPAI/giphy.gif)
