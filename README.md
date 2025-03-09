@@ -1,6 +1,6 @@
 # stats220
 
-This is my repo where I explore data analysis techniques and R programming. For more details about my projects, visit my [GitHub profile](https://github.com/annafergusson/stats220).
+This is my repo where I explore data analysis techniques and R programming. For more details about my projects, visit my [GitHub profile](https://github.com/justin1151/stats220).
 
 ## A little about me:
 
@@ -16,4 +16,4 @@ I'm pursuing a Bachelor of Communication and I'm excited about the opportunities
 2. It provides a strong foundation for advanced studies.
 3. It offers practical insights through hands-on projects.
 
-A meme that captures how I currently feel about my university studies is![]([https://media.giphy.com/media/26AHqZycSplGWWPAI/giphy.gif](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDhreWNncTRuMnYwZW95bHl2eGJqanBjbmdzenM2dGt6bWJxbTI3biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/a93jwI0wkWTQs/giphy.gif))
+A meme that captures how I currently feel about my university studies is![]((https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDhreWNncTRuMnYwZW95bHl2eGJqanBjbmdzenM2dGt6bWJxbTI3biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/a93jwI0wkWTQs/giphy.gif))
