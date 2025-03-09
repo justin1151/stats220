@@ -16,4 +16,4 @@ I'm pursuing a Bachelor of Communication and I'm excited about the opportunities
 2. It provides a strong foundation for advanced studies.
 3. It offers practical insights through hands-on projects.
 
-A meme that captures how I currently feel about my university studies is ! [](https://media.giphy.com/media/26AHqZycSplGWWPAI/giphy.gif)
+A meme that captures how I currently feel about my university studies is ![](https://media.giphy.com/media/26AHqZycSplGWWPAI/giphy.gif)
