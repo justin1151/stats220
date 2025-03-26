@@ -1,0 +1,76 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+h1, h2, h3 {
+  color: #2C3E50;
+}
+
+```
+
+## Advertisement Data Analysis
+
+### What's going on with this data?
+
+You need to change the contents of this Rmd! Replace the R code and markdown give below in this template document.
+
+```{r}
+
+# Load and insert the data
+
+library(tidyverse) 
+
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQVFD9JTLErVW8qtdhbrqUPIQxR0JzAF2Bl_uXlPo5lGKffOt1knPcUToNhANVel7whb2UNc-9ZlviA/pub?output=csv")
+
+latest_data <- logged_data %>%
+  rename(
+    observation_time = 2, 
+    relevance_rating = 3,  
+    ad_format        = 4,
+    ad_details       = 5,
+    device_platform  = 6
+        )
+
+min_relevance  <- min(latest_data$relevance_rating, na.rm = TRUE)
+max_relevance  <- max(latest_data$relevance_rating, na.rm = TRUE)
+mean_relevance <- mean(latest_data$relevance_rating, na.rm = TRUE)
+
+# Create and print bar charts
+bar_chart1 <- latest_data %>%
+  separate_rows(ad_format, sep = "," )
+
+bar_chart1 %>%
+  ggplot() +
+  geom_bar(aes(y = ad_format)) +
+  labs(title = "Frequency of Ad Formats", x = "Ad Format", y = "Count") 
+print(bar_chart1)
+
+bar_chart2 <- latest_data %>%
+  separate_rows(device_platform, sep = "," )
+
+bar_chart2 %>%
+  ggplot() +
+  geom_bar(aes(y = device_platform)) +
+  labs(title = "Observations by Device/Platform", x = "Device/Platform", y = "Count")
+
+print(bar_chart2)
+
+
+```
+### summary values
+
+
+The dataset contains r total_obs observations, with a minimum relevance rating of r min_relevance, a maximum relevance rating of r max_relevance, and an average relevance of r round(mean_relevance, 2).
+
+![](https://shortpixel.com/blog/wp-content/uploads/2023/12/nyan-cat.gif)
