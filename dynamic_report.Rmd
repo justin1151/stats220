@@ -19,19 +19,27 @@ h1, h2, h3 {
 
 ```
 
-## Advertisement Data Analysis
+## Advertisement Data Analysis:
 
-### What's going on with this data?
+This report analyses advertisement data sourced from a public Google Sheets CSV file. The analysis focuses on summarizing ad relevance ratings and visualizing the frequency of ad formats and device/platform usage. Below, we display two key charts and dynamic summary values to help understand the dataset.
 
-You need to change the contents of this Rmd! Replace the R code and markdown give below in this template document.
 
-```{r}
+### Charts part: 
+ 
+Below are two visualizations created from the data:
 
-# Load and insert the data
+
+```{r, echo=FALSE}
+
+# Insert tidyverse package
 
 library(tidyverse) 
 
+# URL for the CSV file
+
 logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQVFD9JTLErVW8qtdhbrqUPIQxR0JzAF2Bl_uXlPo5lGKffOt1knPcUToNhANVel7whb2UNc-9ZlviA/pub?output=csv")
+
+# Rename Columns
 
 latest_data <- logged_data %>%
   rename(
@@ -42,35 +50,66 @@ latest_data <- logged_data %>%
     device_platform  = 6
         )
 
-min_relevance  <- min(latest_data$relevance_rating, na.rm = TRUE)
-max_relevance  <- max(latest_data$relevance_rating, na.rm = TRUE)
-mean_relevance <- mean(latest_data$relevance_rating, na.rm = TRUE)
 
-# Create and print bar charts
+# Create Bar Chart for Question 1
+
 bar_chart1 <- latest_data %>%
   separate_rows(ad_format, sep = "," )
 
 bar_chart1 %>%
   ggplot() +
-  geom_bar(aes(y = ad_format)) +
-  labs(title = "Frequency of Ad Formats", x = "Ad Format", y = "Count") 
-print(bar_chart1)
+  geom_bar(aes(y = ad_format), colour = "black", fill = "#DE3163") +
+  labs(title = "Frequency of Ad Formats", x = "Ad Format", y = "Count") +
+  theme(panel.background = element_rect(fill = "#FFFFF1"))
+
+# Create Bar Chart for Question 2
 
 bar_chart2 <- latest_data %>%
   separate_rows(device_platform, sep = "," )
 
 bar_chart2 %>%
   ggplot() +
-  geom_bar(aes(y = device_platform)) +
-  labs(title = "Observations by Device/Platform", x = "Device/Platform", y = "Count")
+  geom_bar(aes(y = device_platform), colour = "black", fill = "#6495ED") +
+  labs(title = "Observations by Device/Platform", x = "Device/Platform", y = "Count") +
+  theme(panel.background = element_rect(fill = "#FFFFF1"))
 
-print(bar_chart2)
 
 
 ```
-### summary values
+
+## Summary values:
+
+Dynamic inline R code below displays summary values computed from the dataset. These values include the total number of observations and key statistics on the ad relevance rating.
 
 
-The dataset contains r total_obs observations, with a minimum relevance rating of r min_relevance, a maximum relevance rating of r max_relevance, and an average relevance of r round(mean_relevance, 2).
+```{r, echo=FALSE}
+
+# The mean of ad relevance scores
+mean_relevance <- mean(
+  logged_data$`On a scale of 1 to 10, how relevant was the ad to your interests?`,
+  na.rm = TRUE
+)
+
+# The minimum value for the type of ad encountered
+min_ad_type <- min(
+  logged_data$`What type of ad did you encounter the most in usual?`,
+  na.rm = TRUE
+)
+
+# Maximum relevance and count of survey_q3 responses
+max_relevance <- max(
+  logged_data$`On a scale of 1 to 10, how relevant was the ad to your interests?`,
+  na.rm = TRUE
+)
+response_count_q3 <- nrow(latest_data)
+
+# Print out the summary
+print(paste("Mean ad relevance:", mean_relevance))
+print(paste("Min ad type encountered:", min_ad_type))
+print(paste("Max ad relevance:", max_relevance))
+print(paste("Total number of survey_q3 responses:", response_count_q3))
+
+```
+
 
 ![](https://shortpixel.com/blog/wp-content/uploads/2023/12/nyan-cat.gif)
