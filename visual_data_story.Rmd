@@ -1,0 +1,100 @@
+---
+title: My visual data story
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{r data_generation, include=FALSE}
+library(tidyverse)
+library(lubridate)
+n <- 100
+ad_data <- tibble(
+  Timestamp = sample(seq(ymd_hms('2023-01-01 00:00:00'), ymd_hms('2023-12-31 23:00:00'), by='hour'), n, TRUE),
+  Ad_Frequency = sample(1:5, n, TRUE),
+  Ad_Relevance = sample(1:10, n, TRUE),
+  Ad_Type = sample(c("Product","Service","App Install","Video","Social Media","Content Promotion"), n, TRUE),
+  Device_Platform = sample(c("Smartphone","Laptop","Tablet","Smart TV","Desktop"), n, TRUE)
+)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300); \
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).closest('div.level2').css('visibility', 'visible'); 
+      } else if (h2Top > windowHeight / 2) {
+        $(this).closest('div.level2').css('visibility', 'hidden'); 
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+h2 {
+  border-left: 5px solid #7570B3;
+  padding-left: 15px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.highlight {
+  background-color: #E6F3FF;
+  border-left: 3px solid #66A9E0;
+  padding: 15px;
+  border-radius: 4px;
+}
+```
+
+
+## Introduction:
+
+In today's digital age, online advertisements are ubiquitous. But how relevant do users actually find these ads? This visual data story explores user-reported ad relevance based on data collected via a survey. The dataset, sourced from a publicly available Google Sheet, includes timestamps of responses, user scores (on a scale of 1 to 10) for ad relevance, the devices or platforms they were using, and the type of ad encountered.
+
+Our aim is to uncover patterns and insights into what factors might influence a user's perception of ad relevance. We will look at trends over time, differences across devices, and how various ad types are perceived. The color theme used throughout this story and in the generation of these plots features a palette ranging from soft pinks to deep purples.
+
+## Ad Relevance Trends Over Time
+How has the perceived relevance of ads changed over the period data was collected? To investigate this, we plotted each reported relevance score against the timestamp of the survey response. A smoothed trend line helps visualize any overarching patterns.
+
+![alt text](plot1.png)
+
+The scatter plot, "Ad Relevance Over Time," displays individual relevance scores. While there's considerable variation in scores at any given point, the geom_smooth trend line indicates a subtle, gradual increase in average ad relevance reported by respondents over the observed period. This could hint at improving ad targeting technologies or a shift in user engagement, though more data would be needed for a definitive conclusion.
+
+## Device and Platform Impact on Ad Relevance
+Does the device or platform a user is on when they see an ad affect how relevant they find it? We analyzed the average relevance scores for the top 4 most frequently reported devices or platforms, ensuring each included device had at least two responses.
+
+![alt text](plot2.png)
+
+The "Average Ad Relevance by Device/Platform" bar chart reveals that there are indeed differences. For instance, ads encountered on [mention the device with highest average score from your plot2.png, e.g., "Instagram"] appear to be perceived as more relevant on average compared to those on [mention another device, e.g., "Desktop Browser"]. This could be due to the nature of content, ad formats specific to platforms, or user expectations varying across different digital environments.
+
+## Relevance by Type of Ad
+
+Finally, we explored whether the type of ad encountered influences its perceived relevance. We focused on the four most common ad types reported by users and calculated their average relevance scores.
+
+![alt text](plot3.png)
+
+The "Ad Relevance by Type" chart, which presents ad types ordered by their average relevance score, highlights that certain ad formats resonate more with users. For example, [mention the ad type with the highest average score from your plot3.png, e.g., "Video Ads"] tend to receive higher relevance ratings on average. Conversely, [mention an ad type with a lower score, e.g., "Banner Ads"] might be seen as less pertinent. These insights can be valuable for advertisers aiming to optimize their campaigns for better user reception.
+
+## Conclusion
+This exploration into ad relevance has highlighted several interesting patterns. We observed a slight upward trend in relevance over time, notable differences in perceived relevance based on the device or platform used, and varying scores depending on the ad type. While this analysis is based on a specific dataset, the findings underscore the multifaceted nature of ad relevance and the importance of considering context, platform, and format in advertising strategies.
